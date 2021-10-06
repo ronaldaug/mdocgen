@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Md to Doc</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/materia/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Rokkitt:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="center-box">
+                <div class="message"></div>
+                <div class="spinner"></div>
+                <div class="step-one card">
+                        <div class="card-header">
+                                <h4>Upload Markdown Files</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="uploadForm">
+                                <div class="form-group">
+                                    <label for="files">Select .md files</label>
+                                    <input class="form-control" type="file" name="files" id="files" multiple>
+                                </div>
+                                <button class="btn btn-success">Upload</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="step-two card">
+                        <div class="card-header">
+                            <h4>Generate Documentation</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="doc-title" placeholder="Document Title">
+                                <p class="float-right"><small class="help-block text-muted">Short title is better</small></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="theme">Theme Color</label>
+                                <input class="form-control" type="color" name="theme">
+                            </div>
+                            <button class="btn btn-success btn-generate">Generate</button>
+                        </div>
+                    </div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/index.js"></script>
+    <!-- <script src="js/mtd.min.js"></script> 3 KB in gzip -->
+</body>
+
+</html>
