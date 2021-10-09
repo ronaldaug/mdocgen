@@ -11,10 +11,10 @@
 
 - Custom Theme Color
 - Pagination ( next and previous )
-- Responsive Design
+- Responsive Design , Mobile Menu
 - Left and Right content menus
 - Smooth scroll for anchor links
-- Bootstrap 4
+- Bootstrap
 
 ----
 
