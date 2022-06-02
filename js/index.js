@@ -2,10 +2,11 @@
     const btnGenerate = document.querySelector(".btn-generate");
     const uploadFom = document.querySelector("#uploadForm");
 
+    // Sometimes, a tag id="" includes number and it becomes invalid selector
     const removeIntFromLink = (source)=>{
         if(!source) return;
-        let content = source.replace(/(id=")(.*?)(")/gm,(match,one,two,three)=>{
-            return one+two.substring(1)+three;
+        let content = source.replace(/(id=")(.*?)(")/gm,(match)=>{
+            return match.replace(/[0-9]/g, '');
         })
         return content;
     }
@@ -84,6 +85,11 @@
             alert("Please add document title")
             return;
         }
+
+       // Theme color
+       const color = document.querySelector('input[name="theme_color"]').value;
+       const theme = document.querySelector('select[name="theme"]').value;
+
         // JSZip library
         let zip = new JSZip();
 
@@ -99,7 +105,7 @@
 
             // single HTML page
             const htmlpage = `
-            ${config.header(`${docTitle.value} - ${name}`)}
+            ${config.header(`${docTitle.value} - ${name}`, theme)}
             ${sidebar}
             ${config.mainContent(source)}
             ${config.pagination(name,files)}
@@ -110,9 +116,7 @@
             zip.file(`${name}.html`, htmlpage);
        }
 
-       // Theme color
-       const color = document.querySelector('input[name="theme"]').value;
-       const styleText = styleFunc(color);
+       const styleText = styleFunc(color,theme);
 
        // create JS folder
        const jsFolder = zip.folder("js");
