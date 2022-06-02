@@ -169,27 +169,29 @@ const config = {
 
        // smooth scroll to
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                let currentID = this.getAttribute('href');
-                let targetName = currentID ? currentID.substring(1) : currentID;
-                let targetId  = document.querySelector("a[name='"+targetName+"']");
-                if(targetId){
-                    targetId.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    return;
-                }
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    let currentID = this.getAttribute('href');
+                    let targetName = currentID ? currentID.substring(1) : currentID;
+                    let targetId  = document.querySelector("a[name='"+targetName+"']");
+                    if(targetId){
+                        targetId.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        return;
+                    }
 
-                targetId  = document.querySelector(currentID);
-                if(targetId){
-                    targetId.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    targetId  = document.querySelector(currentID);
+                    if(targetId){
+                        targetId.scrollIntoView({
+                            behavior: 'smooth'
+                        });
 
-                   setTimeout(()=>{
-                      rightSidebar.setAttribute("style","transform:translateX(200%)")
-                   },800)
+                    if(window.innerWidth < 576){
+                        setTimeout(()=>{
+                            rightSidebar.setAttribute("style","transform:translateX(200%)")
+                        },800)
+                    }
                 }
                 
             });
