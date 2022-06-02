@@ -10,6 +10,7 @@ const config = {
 
         return (new Styles()).lightTheme(color);
     },
+
     header:(title,theme = 'cosmo')=>{
         return `<!DOCTYPE html>
         <html lang="en">
@@ -35,21 +36,15 @@ const config = {
            <div class="row">
            <div class="col-lg-3">`;
     },
+
     leftSidebar: (title,data)=>{
             
-        let lists = [];
+        let lists = '';
         for(let i = 0; i < data.length; i++){
             const {name} = data[i]; 
             let isIndex = name === 'index';
-            let list = `<li class="list-group-item"><a href="${name}.html">${isIndex ? 'Main' : name.replaceAll("-"," ")}</a></li>`;
-            if(isIndex){
-                lists.unshift(list);
-            }else{
-                lists.push(list);
-            }
+            lists += `<li class="list-group-item"><a href="${name}.html">${isIndex ? 'Main' : name.replaceAll("-"," ")}</a></li>\n`;
         }
-
-        lists = lists.join('');
 
         return `<div class="left-sidebar">
         <div class="back-btn"><span class="ms-4 fa fa-arrow-left"></span></div>
@@ -61,6 +56,7 @@ const config = {
         </div>
         <div class="col-lg-6">`
     },
+
     mainContent:(source)=>{
         return `<div class="main-content p-4 mb-2">
     ${source}
@@ -72,6 +68,7 @@ const config = {
         files.forEach((e,i)=>{
             if(name == e.name){
 
+                // if there are both next and prev
                 if(files[i-1] !== undefined && files[i+1] !== undefined){
                     pager += `<div class="col-6">
                     <a href="${files[i-1].name}.html">
@@ -90,7 +87,7 @@ const config = {
                     return;
                 }
 
-                // next page is undefined
+                // if next page is undefined
                 if(files[i-1] !== undefined && files[i+1] == undefined){
                     pager += `<div class="col-12">
                     <a href="${files[i-1].name}.html">
@@ -102,7 +99,7 @@ const config = {
                     return;
                 }
 
-                // prev page is undefined
+                // if prev page is undefined
                 if(files[i+1] !== undefined && files[i-1] == undefined){
                     pager += `<div class="col-12">
                     <a href="${files[i+1].name}.html">
@@ -117,6 +114,7 @@ const config = {
         pager += '</div>'
         return pager;
     },
+
     rightSidebar:(source)=>{
         let Dom = document.createElement("ul");
         Dom.innerHTML = source;
@@ -128,14 +126,14 @@ const config = {
                 if(e.tagName == 'H1'){
                     count++;
                 }
-                rightLists += `<li class="list-group-item"><a class="${e.tagName == 'H2'?'h2':''}" href="#${e.id}"> ${e.tagName == 'H1'?count:''} - ${e.innerText}</a></li>`;
+                rightLists += `<li class="list-group-item ${e.tagName == 'H2'?'h2':''}"><a href="#${e.id}"> ${e.tagName == 'H1'?count:''} - ${e.innerText}</a></li>`;
             });
         }
 
        return `</div><!-- col-lg-7 -->
         <div class="col-lg-3">
            <div class="right-sidebar p-4 mt-4">
-               <a class="right-back-btn pull-right"><span class="fa fa-times"></span></a>
+               <a class="right-back-btn float-end"><span class="fa fa-times"></span></a>
                 <p class="up-case">Contents</p>
                 <ul class="right-menu list-group">
                     ${rightLists}
@@ -144,6 +142,7 @@ const config = {
         </div> <!-- col-lg-2 -->
         </div></div>`
     },
+
     scriptText:`const rightSidebar  = document.querySelector(".right-sidebar");
     const leftSidebar  = document.querySelector(".left-sidebar");
     const rightMenu  = document.querySelectorAll(".right-sidebar ul li a");
@@ -182,12 +181,15 @@ const config = {
                     return;
                 }
 
-                currentID = !isNaN(currentID.charAt(0)) ? currentID.substring(1) : currentID;
                 targetId  = document.querySelector(currentID);
                 if(targetId){
                     targetId.scrollIntoView({
                         behavior: 'smooth'
                     });
+
+                   setTimeout(()=>{
+                      rightSidebar.setAttribute("style","transform:translateX(200%)")
+                   },800)
                 }
                 
             });

@@ -3,12 +3,24 @@
     const uploadFom = document.querySelector("#uploadForm");
 
     // Sometimes, a tag id="" includes number and it becomes invalid selector
-    const removeIntFromLink = (source)=>{
+    removeNumberInLinks = (source) =>{
+        return source.replace(/id="(.*?)"/gm,(match)=>{
+            return match.replace(/[0-9]/g,'');
+        });
+    }
+
+    // Sometimes, user point github doc with ".md" extension. Just replace it with ".html"
+    replaceMdToHTML = (source) =>{
+        return source.replace(/href="(.*?)"/gm,(match)=>{
+            return match.replace(/\.md/g, '.html');
+        });
+    }
+
+    const prepareContent = (source)=>{
         if(!source) return;
-        let content = source.replace(/(id=")(.*?)(")/gm,(match)=>{
-            return match.replace(/[0-9]/g, '');
-        })
-        return content;
+        let content = removeNumberInLinks(source);
+            content = replaceMdToHTML(content);
+            return content;
     }
 
      // SHow Step Two, Hide One
@@ -63,7 +75,7 @@
             const res = await readmd.text();
             const data = {
                 name:filename.split(".")[0],
-                source:removeIntFromLink(md.makeHtml(res))  // convert and store as HTML format
+                source:prepareContent(md.makeHtml(res))  // convert and store as HTML format
             };
             files.push(data)
         })
@@ -105,7 +117,7 @@
 
             // single HTML page
             const htmlpage = `
-            ${config.header(`${docTitle.value} - ${name}`, theme)}
+            ${config.header(`${docTitle.value} - ${name === 'index' ? 'Main' : name}`, theme)}
             ${sidebar}
             ${config.mainContent(source)}
             ${config.pagination(name,files)}
@@ -130,7 +142,7 @@
        // Add css codes to style.css
        cssFolder.file('style.css', styleText);
 
-
+       
        // Download zip folder with time stamp
        zip.generateAsync({type:"blob"})
             .then(function(content) {

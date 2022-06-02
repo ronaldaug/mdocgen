@@ -66,7 +66,7 @@ class Styles {
         cursor:pointer;
     }
     .main-content p img{
-        width:100%;
+        max-width:100%;
     }
     .logo-wrap span.logo,.logo-center-wrap span.logo{
         font-weight: bold;
@@ -113,13 +113,15 @@ class Styles {
         background-color:transparent;
         padding:6px;
         border:1px solid transparent;
+        font-weight:bold;
     }
     ul li.list-group-item a{
         text-decoration:none;
         text-transform: capitalize;
     }
-    ul li.list-group-item a.h2{
+    ul li.list-group-item.h2{
         padding-left:20px;
+        font-weight:normal;
     }
     ul.right-menu li a{
         font-size:12px;
@@ -310,7 +312,7 @@ class Styles {
         cursor:pointer;
     }
     .main-content p img{
-        width:100%;
+        max-width:100%;
     }
     .logo-wrap span.logo,.logo-center-wrap span.logo{
         font-weight: bold;
@@ -357,13 +359,15 @@ class Styles {
         background-color:transparent;
         padding:6px;
         border:1px solid transparent;
+        font-weight:bold;
     }
     ul li.list-group-item a{
         text-decoration:none;
         text-transform: capitalize;
     }
-    ul li.list-group-item a.h2{
+    ul li.list-group-item.h2{
         padding-left:20px;
+        font-weight:normal;
     }
     ul.right-menu li a{
         font-size:12px;

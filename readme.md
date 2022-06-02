@@ -1,6 +1,6 @@
 # MDBOOK
 
-## Markdown files to gitbook style documentation
+## Markdown files to documentation site generator
 ----
 
 <img src="https://res.cloudinary.com/dpnea22ek/image/upload/v1563042832/md.jpg" style="width:100%">
@@ -9,20 +9,19 @@
 
 ## Features
 
+- Bootstrap 5, Lineawesome icons
 - Custom Theme Color
+- Custom Theme Design based on Bootswatch Themes
 - Pagination ( next and previous )
 - Responsive Design , Mobile Menu
 - Left and Right content menus
 - Smooth scroll for anchor links
-- Bootstrap
 
 ----
 
 ## Installation
 
-- Upload MDBOOK on any PHP server.
-
-> This is an early stage project, please do not open the upload page of MDBOOK to public.
+- `cd mdocgen && php -S localhost:4040` or Upload MDBOOK on any PHP server.
 
 > Please make sure to set `chmd` to "md" directory to `777`.
 
@@ -32,8 +31,8 @@
 
 - filesaver js
 - zipjs
-- bootswatch (cosmo theme)
-- bootswatch (materia theme)
+- bootswatch themes
+- bootstrap 5
 - line-awesome
 
 ----

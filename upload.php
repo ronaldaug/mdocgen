@@ -12,8 +12,9 @@
         }
 
 
-        $target='md';
-        $files=[];
+        $target = 'md';
+        $files  = [];
+        $isIndex= false;
             if ($target[strlen($target)-1]!='/') {
                 $target=$target.'/';
             }
@@ -21,11 +22,13 @@
 
                 $file_name = $file['name'];
 
-                if ($file_name === 'README.md' || $file_name === 'readme.md') {
+                if($file_name === 'README.md' || $file_name === 'readme.md'){
                     $file_name = 'index.md';
+                    $isIndex = true;
+                }else{
+                    array_push($files,$file_name);
                 }
 
-                array_push($files,$file_name);
                 $temp=$target;
                 $tmp=$file['tmp_name'];
                 $temp=$temp.basename($file_name);
@@ -35,10 +38,15 @@
             }
 
 
+            if($isIndex){
+                array_unshift($files , 'index.md');
+            }
+
+
             header("Content-Type: application/json");
             echo json_encode([
                 'status'=>200,
                 'message'=>'Success',
-                'files'=>$files
+                'files'=> $files
             ]);
             exit();
