@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mdocgen - Markdown to Documentation Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.3/materia/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Rokkitt:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="center-box">
+                <div class="message"></div>
+                <div class="spinner"></div>
+                    <div class="step-one row">
+                        <div class="col">
+                            <h4 class="my-4">Upload Markdown Files</h4>
+                            <form id="uploadForm">
+                                <div class="form-group my-3">
+                                    <label for="files">Select .md files</label>
+                                    <input type="file" name="files" id="files" multiple onchange="previewFileNames(event)">
+                                </div>
+                                <button class="btn btn-success">Upload</button>
+                            </form>
+                        </div>
+                        <div class="col sortable-list d-none">
+                                <h4 class="my-4">Order Menu Before Upload</h4>
+                                <ul id="previewFiles" class="list-group o-sortable"></ul>
+                        </div>
+                    </div>
+                    <div class="step-two card">
+                        <div class="card-header">
+                            <h4>Generate Documentation</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group my-2">
+                                <input type="text" class="form-control" id="doc-title" placeholder="Document Title">
+                                <p class="float-right"><small class="help-block text-muted">Short title is better</small></p>
+                            </div>
+                            <div class="form-group my-2">
+                                <label for="theme_color">Theme Color</label>
+                                <input type="color" name="theme_color">
+                            </div>
+                            <div class="form-group my-2">
+                                <label for="theme">Theme Design</label>
+                                <select name="theme" class="form-control">
+                                    <option value="cosmo" default>Cosmo</a>
+                                    <option value="cerulean">Cerulean</a>
+                                    <option value="cyborg">Cyborg</a>
+                                    <option value="darkly">Darkly</a>
+                                    <option value="flatly">Flatly</a>
+                                    <option value="journal">Journal</a>
+                                    <option value="litera">Litera</a>
+                                    <option value="lumen">Lumen</a>
+                                    <option value="lux">Lux</a>
+                                    <option value="materia">Materia</a>
+                                    <option value="minty">Minty</a>
+                                    <option value="morph">Morph</a>
+                                    <option value="pulse">Pulse</a>
+                                    <option value="quartz">Quartz</a>
+                                    <option value="sandstone">Sandstone</a>
+                                    <option value="simplex">Simplex</a>
+                                    <option value="sketchy">Sketchy</a>
+                                    <option value="slate">Slate</a>
+                                    <option value="solar">Solar</a>
+                                    <option value="spacelab">Spacelab</a>
+                                    <option value="superhero">Superhero</a>
+                                    <option value="united">United</a>
+                                    <option value="vapor">Vapor</a>
+                                    <option value="yeti">Yeti</a>
+                                    <option value="zephyr">Zephyr</a>
+                                  </select>
+                            </div>
+                            <button class="btn btn-success btn-generate">Generate</button>
+                        </div>
+                    </div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.13.3/html5sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+    <script src="js/styles.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/index.js"></script>
+    <!-- <script src="js/mtd.min.js"></script> 3 KB in gzip -->
+</body>
+
+</html>

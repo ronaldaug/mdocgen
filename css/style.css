@@ -1,0 +1,77 @@
+.center-box {
+    max-width: 800px;
+    margin: 100px auto;
+}
+
+.step-two {
+    display: none;
+}
+
+.o-sortable li:hover{
+    cursor: grab;
+    background: #eee;
+    border:2px dashed #999;
+}
+
+.sort-placeholder{
+    border:2px dashed #4caf50;
+    background:#eee;
+    list-style: none;
+    min-height:40px;
+}
+
+.sortable-dragging{
+    cursor:grabbing;
+}
+
+/* Spinner */
+.loader {
+    animation: spin 1s infinite linear;
+    border: solid 2vmin transparent;
+    border-radius: 50%;
+    border-right-color: #09f;
+    border-top-color: #09f;
+    box-sizing: border-box;
+    height: 14vmin;
+    left: calc(50% - 10vmin);
+    position: fixed;
+    top: calc(50% - 10vmin);
+    width: 14vmin;
+    z-index: 1;
+}
+
+.loader:before {
+    animation: spin 2s infinite linear;
+    border: solid 2vmin transparent;
+    border-radius: 50%;
+    border-right-color: #3cf;
+    border-top-color: #3cf;
+    box-sizing: border-box;
+    content: "";
+    height: 10vmin;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 10vmin;
+}
+
+.loader:after {
+    animation: spin 3s infinite linear;
+    border: solid 2vmin transparent;
+    border-radius: 50%;
+    border-right-color: #6ff;
+    border-top-color: #6ff;
+    box-sizing: border-box;
+    content: "";
+    height: 6vmin;
+    left: 2vmin;
+    position: absolute;
+    top: 2vmin;
+    width: 6vmin;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
