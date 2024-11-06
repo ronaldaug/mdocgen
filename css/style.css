@@ -1,27 +1,10 @@
 .center-box {
-    max-width: 800px;
+    max-width: 1100px;
     margin: 100px auto;
 }
 
 .step-two {
     display: none;
-}
-
-.o-sortable li:hover{
-    cursor: grab;
-    background: #eee;
-    border:2px dashed #999;
-}
-
-.sort-placeholder{
-    border:2px dashed #4caf50;
-    background:#eee;
-    list-style: none;
-    min-height:40px;
-}
-
-.sortable-dragging{
-    cursor:grabbing;
 }
 
 /* Spinner */

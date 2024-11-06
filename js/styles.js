@@ -376,6 +376,35 @@ class Styles {
         color:${color};
     }
 
+    .submenu {
+        max-height:0;
+        visibility: hidden;
+        opacity:0;
+        overflow: hidden; /* Hide overflow to prevent content jumping */
+        transition: all 0.4s ease-in-out; /* Add transition and easing */
+    }
+
+    .submenu.show {
+        visibility: visible;
+        opacity:1;
+        max-height: 3000px; /* Allow height to adjust to content */
+        transition: all 0.4s ease-in-out;
+    }
+
+    i.fa.fa-angle-right{
+        transition:all ease-in-out 0.2s;
+    }
+
+    i.fa.fa-angle-right.rotate {
+        transform: rotate(90deg);
+        transition:all ease-in-out 0.2s;
+    }
+
+    li.list-group-item a.submenu-item{
+        width:95%;
+        display:inline-flex;
+        justify-content:space-between;
+    }
 
     ul.left-menu li.list-group-item:hover{
         background:#e9f0f7;
@@ -392,8 +421,18 @@ class Styles {
 
     ul.left-menu li.list-group-item{
         padding-left:20px;
+        list-style:none;
         border-top:1px solid #ddd;
     }
+
+    ul.left-menu li.list-group-item.level-2 {
+        padding-left: 40px;
+    }
+
+    ul.left-menu li.list-group-item.level-3 {
+        padding-left: 60px;
+    }
+        
     ul.left-menu li.list-group-item:first-child{
         border-top:1px solid transparent;
     }
